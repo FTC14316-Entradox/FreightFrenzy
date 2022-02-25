@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOp.v2_0;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Autonomous.v2_0.Robot_v2;
 
+@Disabled
 @TeleOp(group="TeleOp_v2", name="TeleOp_v2_2")
 public class TeleOp_v2_2 extends LinearOpMode {
 

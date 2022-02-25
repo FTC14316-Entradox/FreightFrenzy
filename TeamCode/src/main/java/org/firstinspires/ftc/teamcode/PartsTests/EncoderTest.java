@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(group="PartsTests", name="EncoderTest")
+@Disabled
 public class EncoderTest extends OpMode {
 
     public DcMotor fr = null;

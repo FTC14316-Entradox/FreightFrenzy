@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.TeleOp.v1_0;
 
 import org.firstinspires.ftc.teamcode.threadopmode.*;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -13,6 +14,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+@Disabled
 @TeleOp(group="TeleOp_v1", name="TeleOp_v1_1")
 public class TeleOp_v1_1 extends ThreadOpMode {
 

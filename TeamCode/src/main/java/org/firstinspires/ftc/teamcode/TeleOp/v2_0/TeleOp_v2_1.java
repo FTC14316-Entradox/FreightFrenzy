@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@TeleOp(group="TeleOp_v2", name="TeleOp_v2_1")
+@TeleOp(name="PROVINCIALS_TELEOP")
 public class TeleOp_v2_1 extends ThreadOpMode {
 
     //Declaring drivetrain members
@@ -91,7 +91,7 @@ public class TeleOp_v2_1 extends ThreadOpMode {
                     br.setPower(xAdj);
                 }
 
-                if (x == 0.0) {
+                if (Math.abs(x) < Math.abs(y*Math.tan(3.1415/6))) {
                     fl.setPower(yAdj);
                     bl.setPower(yAdj);
                     fr.setPower(yAdj);

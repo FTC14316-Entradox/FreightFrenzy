@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.TeleOp.v2_0;
 
 import org.firstinspires.ftc.teamcode.threadopmode.*;
+
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 import com.qualcomm.robotcore.hardware.Servo;
@@ -11,6 +13,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import java.lang.*;
 
+@Disabled
 @TeleOp(group="TeleOp_v2", name="TeleOp_v2_0")
 public class TeleOp_v2_0 extends ThreadOpMode {
 

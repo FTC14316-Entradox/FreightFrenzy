@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomous.v2_0;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -14,6 +15,7 @@ import org.firstinspires.ftc.teamcode.RoadRunner.drive.SampleMecanumDrive;
 
 import java.util.List;
 
+@Disabled
 @Autonomous(group="Autonomous_v2.2", name="AutoB_wh_v2_2")
 public class AutoB_wh_v2_2 extends LinearOpMode {
 

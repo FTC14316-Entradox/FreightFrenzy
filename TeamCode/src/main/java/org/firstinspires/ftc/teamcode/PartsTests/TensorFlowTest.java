@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.PartsTests;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -14,6 +15,7 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 
 @TeleOp(group="PartsTests", name="TFTest")
+@Disabled
 public class TensorFlowTest extends LinearOpMode {
 
     public DcMotor fr = null;

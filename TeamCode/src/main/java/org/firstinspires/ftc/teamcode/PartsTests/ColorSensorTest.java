@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.PartsTests;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import java.lang.reflect.Array;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -31,6 +32,7 @@ import com.qualcomm.robotcore.hardware.SwitchableLight;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 @TeleOp(group="PartsTests", name="ColorSensorTest")
+@Disabled
 public class ColorSensorTest extends OpMode{
 
     //Declaring drivetrain members

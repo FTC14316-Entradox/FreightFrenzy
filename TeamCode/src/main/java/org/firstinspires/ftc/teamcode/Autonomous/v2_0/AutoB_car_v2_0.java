@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomous.v2_0;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -14,6 +15,7 @@ import java.util.List;
 import org.firstinspires.ftc.teamcode.RoadRunner.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.RoadRunner.trajectorysequence.TrajectorySequence;
 
+@Disabled
 @Autonomous(group="Autonomous_v2.0", name="AutoB_car_v2_0")
 public class AutoB_car_v2_0 extends LinearOpMode {
 

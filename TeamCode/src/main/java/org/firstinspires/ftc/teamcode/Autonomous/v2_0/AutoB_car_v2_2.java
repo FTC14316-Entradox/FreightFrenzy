@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous.v2_0;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.robotcore.external.ClassFactory;
 
 import java.util.List;
 
+@Disabled
 @Autonomous(group="Autonomous_v2.2", name="AutoB_car_v2_2")
 public class AutoB_car_v2_2 extends LinearOpMode {
 

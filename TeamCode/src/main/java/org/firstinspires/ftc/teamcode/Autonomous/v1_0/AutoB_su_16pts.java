@@ -6,6 +6,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous.v1_0;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import java.lang.reflect.Array;
@@ -40,6 +41,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(group="Autonomous_v1", name="AutoB_su_16pts")
+@Disabled
 public class AutoB_su_16pts extends OpMode{
 
     //Declaring drivetrain members
