@@ -45,7 +45,7 @@ public class AutoR_car_v2_1 extends LinearOpMode {
         }
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(70, -38, Math.toRadians(180));
+        Pose2d startPose = new Pose2d(70, -30, Math.toRadians(180));
         drive.setPoseEstimate(startPose);
 
         Trajectory trajSeq1 = drive.trajectoryBuilder(startPose)
@@ -55,18 +55,18 @@ public class AutoR_car_v2_1 extends LinearOpMode {
                 .build();
 
         Trajectory trajSeqx = drive.trajectoryBuilder(trajSeq1.end())
-            .back(14.2)
+            .back(8)
             .build();
 
         Trajectory trajSeq2 = drive.trajectoryBuilder(trajSeqx.end())
                 .forward(
-                        32.5,
+                        35,
                         SampleMecanumDrive.getVelocityConstraint(15, 0.9, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();
 
         TrajectorySequence trajSeq3 = drive.trajectorySequenceBuilder(trajSeq2.end())
-                .lineToSplineHeading(new Pose2d(28, -35.5, Math.toRadians(180))) //-51
+                .lineToSplineHeading(new Pose2d(26.5, -38, Math.toRadians(180))) //-51
                 .waitSeconds(0.2)
                 .turn(Math.toRadians(-90))
                 .waitSeconds(0.5)
@@ -80,7 +80,7 @@ public class AutoR_car_v2_1 extends LinearOpMode {
                 .build();
 
         TrajectorySequence trajSeq4 = drive.trajectorySequenceBuilder(trajSeq3.end())
-                .lineToLinearHeading(new Pose2d(40, -68, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(38, -68, Math.toRadians(90)))
                 .build();
 
         waitForStart();

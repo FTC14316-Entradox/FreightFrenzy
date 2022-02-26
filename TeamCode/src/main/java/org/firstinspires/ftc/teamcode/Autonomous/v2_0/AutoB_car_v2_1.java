@@ -60,7 +60,7 @@ public class AutoB_car_v2_1 extends LinearOpMode {
             .build();
 
         TrajectorySequence trajSeq3 = drive.trajectorySequenceBuilder(trajSeq2.end())
-                .lineToSplineHeading(new Pose2d(-28, -34, Math.toRadians(0))) //-51
+                .lineToSplineHeading(new Pose2d(-30.5, -37, Math.toRadians(0))) //-51
                 .waitSeconds(0.2)
                 .turn(Math.toRadians(90))
                 .waitSeconds(0.5)

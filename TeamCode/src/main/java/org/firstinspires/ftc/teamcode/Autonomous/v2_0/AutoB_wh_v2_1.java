@@ -48,7 +48,7 @@ public class AutoB_wh_v2_1 extends LinearOpMode {
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence trajSeq1 = drive.trajectorySequenceBuilder(startPose)
-                .lineToSplineHeading(new Pose2d(-50, -12, Math.toRadians(0)))
+                .lineToSplineHeading(new Pose2d(-53, -12, Math.toRadians(0)))
                 .build();
 
         TrajectorySequence trajSeq2 = drive.trajectorySequenceBuilder(trajSeq1.end())
