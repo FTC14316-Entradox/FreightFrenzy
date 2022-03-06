@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous.v2_0;
 
+import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -10,10 +10,10 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.teamcode.RoadRunner.drive.SampleMecanumDrive;
 
 import java.util.List;
 
-@Disabled
 @Autonomous(group="Autonomous_v2.2", name="AutoB_car_v2_2")
 public class AutoB_car_v2_2 extends LinearOpMode {
 
@@ -33,11 +33,11 @@ public class AutoB_car_v2_2 extends LinearOpMode {
     public int num = 1;
     public ElapsedTime runtime = new ElapsedTime();
 
-
     @Override
     public void runOpMode() {
 
         Robot robot = new Robot(hardwareMap);
+        Robot_v2 robot2 = new Robot_v2(hardwareMap);
 
         initVuforia();
         initTfod();
@@ -45,23 +45,25 @@ public class AutoB_car_v2_2 extends LinearOpMode {
             tfod.activate();
         }
 
+        SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
+        Pose2d startPose = new Pose2d(0, 0, Math.toRadians(0));
+        drive.setPoseEstimate(startPose);
+
         waitForStart();
         if (!isStopRequested()) {
-            robot.safeBox();
+            robot.parallelBox();
+            sleep(2500);
             if (tfod != null) {
                 List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
                 telemetry.addData("Duck Pos", updatedRecognitions);
                 telemetry.update();
                 if (updatedRecognitions != null) {
                     int i = 0;
-                    for (Recognition recognition : updatedRecognitions) {
-                        if (recognition.getLabel() == "Cube") {
-                            if (recognition.getLeft() < 220) {
-                                duckPos = 1;
-                            } else {
-                                if (recognition.getLeft() < 900) {
-                                    duckPos = 2;
-                                }
+                    for (Recognition recognition : updatedRecognitions){
+                        if (recognition.getLabel() == "Team_marker") {
+                            if (recognition.getLeft() < 374) {
+                                duckPos = 2;
+                                if (recognition.getLeft() < 177) { duckPos = 1; }
                             }
                         }
                     }
@@ -71,27 +73,53 @@ public class AutoB_car_v2_2 extends LinearOpMode {
             if (duckPos == 0) {
                 duckPos = 3;
             }
-            telemetry.addData("Duck Position", duckPos);
+            telemetry.addData("Marker Position", duckPos);
             telemetry.update();
 
+            robot.safeBox();
             runtime.reset();
 
-            while (runtime.milliseconds() < 500) {
-                robot.drive(0.3, 1);
-            }
-            robot.stop();
-            while (runtime.milliseconds() < 1500 && runtime.milliseconds() > 500) {
-                robot.drive(0.5, 2);
+            while (runtime.milliseconds() < 300) {
+                robot.drive(0.5, 1);
             }
             robot.stop();
             while (runtime.milliseconds() < 3000 && runtime.milliseconds() > 1500) {
-                robot.carousel(0.6);
-            }
-            while (runtime.milliseconds() < 5000 && runtime.milliseconds() > 3000) {
-                robot.drive(0.3, 1);
+                robot.drive(0.5, 2);
             }
             robot.stop();
-            //Actually run the robot here
+            while (runtime.milliseconds() < 6000 && runtime.milliseconds() > 5000) {
+                robot.drive(-0.3, 1);
+            }
+            robot.stop();
+            while (runtime.milliseconds() < 12000 && runtime.milliseconds() > 8000) {
+                robot.carousel(0.6);
+            }
+            while (runtime.milliseconds() < 16000 && runtime.milliseconds() > 14000) {
+                robot.drive(0.5, 1);
+            }
+            robot.stop();
+
+            drive.turn(Math.toRadians(90));
+            while (runtime.milliseconds() < 22000 && runtime.milliseconds() > 20000) {
+                robot.drive(0.5, 1);
+            }
+            robot.stop();
+
+            robot2.setCascade(duckPos);
+            robot2.dropBox();
+            robot2.pause(1500);
+            robot2.safeBox();
+
+            while (runtime.milliseconds() < 28000 && runtime.milliseconds() > 26000) {
+                robot.drive(-0.5, 1);
+            }
+            robot.stop();
+
+            while (runtime.milliseconds() < 29000 && runtime.milliseconds() > 28500) {
+                robot.drive(-0.5, 2);
+            }
+            robot.stop();
+
 
         }
     }
@@ -114,6 +142,6 @@ public class AutoB_car_v2_2 extends LinearOpMode {
         tfodParameters.isModelTensorFlow2 = true;
         tfodParameters.inputSize = 320;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
-        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
+        tfod.loadModelFromFile("TeamShippingElement.tflite", LABELS); //Change to loadModelFromAsset() if using
     }
 }

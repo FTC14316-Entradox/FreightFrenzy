@@ -48,19 +48,20 @@ public class AutoB_car_v2_1 extends LinearOpMode {
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence trajSeq1 = drive.trajectorySequenceBuilder(startPose)
-            .lineToSplineHeading(new Pose2d(-49, -68, Math.toRadians(0)))
-            .back(13.8)
+            .lineToSplineHeading(new Pose2d(-49, -66, Math.toRadians(0)))
+            .back(3)
             .build();
 
         Trajectory trajSeq2 = drive.trajectoryBuilder(trajSeq1.end())
             .forward(
-                32.5,
+                22.5,
                 SampleMecanumDrive.getVelocityConstraint(15, 0.9, DriveConstants.TRACK_WIDTH),
                 SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
             .build();
 
         TrajectorySequence trajSeq3 = drive.trajectorySequenceBuilder(trajSeq2.end())
                 .lineToSplineHeading(new Pose2d(-30.5, -37, Math.toRadians(0))) //-51
+                .forward(0.5)
                 .waitSeconds(0.2)
                 .turn(Math.toRadians(90))
                 .waitSeconds(0.5)
@@ -72,6 +73,20 @@ public class AutoB_car_v2_1 extends LinearOpMode {
                     robot.safeBox();
                 })
                 .build();
+
+        /* TrajectorySequence trajSeq31 = drive.trajectorySequenceBuilder(trajSeq2.end())
+                .lineToSplineHeading(new Pose2d(-30.5, -38, Math.toRadians(0))) //-51
+                .waitSeconds(0.2)
+                .turn(Math.toRadians(90))
+                .waitSeconds(0.5)
+                .addTemporalMarker(() -> {
+                    robot.goToLvl(duckPos);
+                    sleep(1700);
+                    robot.dropBox();
+                    sleep(1500);
+                    robot.safeBox();
+                })
+                .build(); */
 
         TrajectorySequence trajSeq4 = drive.trajectorySequenceBuilder(trajSeq3.end())
             .lineToLinearHeading(new Pose2d(-40, -68, Math.toRadians(90)))
@@ -109,6 +124,8 @@ public class AutoB_car_v2_1 extends LinearOpMode {
             sleep(2000);
             robot.carousel(0);
             drive.followTrajectory(trajSeq2);
+            /*if (duckPos == 1) {
+                drive.followTrajectorySequence(trajSeq31); } */
             drive.followTrajectorySequence(trajSeq3);
             drive.followTrajectorySequence(trajSeq4);
             sleep(5000);

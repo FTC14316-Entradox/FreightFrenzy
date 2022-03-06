@@ -110,7 +110,7 @@ public class Robot {
 
     public void goToLvl(int level) {
         if (level == 1) {
-            cascade.setTargetPosition(220);
+            cascade.setTargetPosition(280);
         }
         if (level == 2) {
             cascade.setTargetPosition(1000);

@@ -44,18 +44,18 @@ public class AutoB_wh_v2_1 extends LinearOpMode {
         }
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(-70, 12, Math.toRadians(0));
+        Pose2d startPose = new Pose2d(-67, 12, Math.toRadians(0));
         drive.setPoseEstimate(startPose);
 
         TrajectorySequence trajSeq1 = drive.trajectorySequenceBuilder(startPose)
-                .lineToSplineHeading(new Pose2d(-53, -12, Math.toRadians(0)))
+                .lineToSplineHeading(new Pose2d(-48.5, -10, Math.toRadians(0)))
                 .build();
 
         TrajectorySequence trajSeq2 = drive.trajectorySequenceBuilder(trajSeq1.end())
-                .lineToLinearHeading(new Pose2d(-68, 12, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(-68.5, 12, Math.toRadians(90)))
                 .waitSeconds(1)
                 .forward(
-                        32.5,
+                        22.5,
                         SampleMecanumDrive.getVelocityConstraint(15, 0.9, DriveConstants.TRACK_WIDTH),
                         SampleMecanumDrive.getAccelerationConstraint(DriveConstants.MAX_ACCEL))
                 .build();

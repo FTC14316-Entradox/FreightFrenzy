@@ -45,7 +45,7 @@ public class AutoR_car_v2_1 extends LinearOpMode {
         }
 
         SampleMecanumDrive drive = new SampleMecanumDrive(hardwareMap);
-        Pose2d startPose = new Pose2d(70, -30, Math.toRadians(180));
+        Pose2d startPose = new Pose2d(70, -20, Math.toRadians(180));
         drive.setPoseEstimate(startPose);
 
         Trajectory trajSeq1 = drive.trajectoryBuilder(startPose)
